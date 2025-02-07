@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:b="http://www.google.com/2005/gml/b" 
+      xmlns:data="http://www.google.com/2005/gml/data" 
+      xmlns:expr="http://www.google.com/2005/gml/expr">
+  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <b:include data="blog" name="all-head-content"/>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" 
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" 
+        crossorigin="anonymous" />
+  
+  <b:skin><![CDATA[
+    /* ???????? */
+    body { font-family: Arial, sans-serif; line-height: 1.6; }
+    header { background: #25292f; }
+    .navbar-brand, .nav-link { color: #fff !important; }
+    .jumbotron { 
+      background: url('https://via.placeholder.com/1600x500') no-repeat center center; 
+      background-size: cover; 
+      color: #000; 
+      padding: 4rem 2rem; 
+      margin-bottom: 2rem;
+    }
+    .jumbotron h1 { font-size: 3rem; }
+    section { margin-bottom: 2rem; }
+    footer { background: #25292f; color: #fff; padding: 1rem 0; }
+  ]]></b:skin>
+  
+  <script>
+    /* ???? http?https ??????? */
+    (function() {
+      var protocol = window.location.protocol.replace(":", "");
+      if(protocol == "http") {
+        window.location.replace(window.location.href.replace("http", "https"));
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <!-- ???? -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="/">One World Foundation Africa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- ???? -->
+    <div class="jumbotron text-center">
+      <h1 class="display-4">Welcome to One World Foundation Africa</h1>
+      <p class="lead">Empowering communities and transforming lives through training, advocacy and support.</p>
+      <a class="btn btn-primary btn-lg" href="#about">Learn More</a>
+    </div>
+
+    <!-- ???? -->
+    <section id="about">
+      <h2>About Us</h2>
+      <p>
+        One World Foundation Africa is dedicated to empowering communities affected by HIV/AIDS, disabilities, 
+        and other challenges. Our mission is to create a brighter future through training, advocacy, and practical support.
+      </p>
+    </section>
+
+    <!-- ???? -->
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h3 class="card-title">Training Programs</h3>
+              <p class="card-text">We provide training and skill development to empower youth and communities.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h3 class="card-title">Advocacy</h3>
+              <p class="card-text">We advocate for the rights and well-being of vulnerable groups.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h3 class="card-title">Community Support</h3>
+              <p class="card-text">We offer practical support and resources to those in need.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ?????????? -->
+    <section id="news">
+      <h2>Latest News</h2>
+      <b:section id="BlogPost0">
+        <b:widget id="Blog0" locked="false" title="Latest News" type="Blog" version="1">
+          <b:widget-settings>
+            <b:widget-setting name="showDateHeader">false</b:widget-setting>
+            <b:widget-setting name="style.layout">1x1</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main" var="top">
+            <main class="blog-posts hfeed">
+              <b:include data="top" name="status-message"/>
+              <b:if cond='data:posts.length == 0'>
+                <p class="alert alert-warning text-center">No news available at the moment.</p>
+              </b:if>
+              <b:loop index="index" values="data:posts" var="post">
+                <div class="card mb-4">
+                  <article class="card-body">
+                    <h3 class="card-title"><data:post.title/></h3>
+                    <p class="card-text"><data:post.snippet/></p>
+                    <a class="btn btn-primary" expr:href="data:post.url">Read More</a>
+                  </article>
+                </div>
+              </b:loop>
+            </main>
+          </b:includable>
+          <b:includable id="nextprev">
+            <div class="blog-pager text-center">
+              <b:if cond='data:newerPageUrl'>
+                <a class="btn btn-outline-primary me-2" expr:href="data:newerPageUrl">Newer Posts</a>
+              </b:if>
+              <b:if cond='data:olderPageUrl'>
+                <a class="btn btn-outline-secondary" expr:href="data:olderPageUrl">Older Posts</a>
+              </b:if>
+            </div>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </section>
+
+    <!-- ???? -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>
+        <strong>Moses Balibali</strong><br/>
+        <strong>Email:</strong> <a href="mailto:info@owfa.org.uk">info@owfa.org.uk</a><br/>
+        <strong>Phone:</strong> 02084784752<br/>
+        <strong>Address:</strong> Unit 9, Durning Hall, Earlham Grove, London, E7 9AB
+      </p>
+    </section>
+  </main>
+
+  <!-- ?? -->
+  <footer class="text-center">
+    <div class="container">
+      <p>&#169; 2022 One World Foundation Africa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" 
+          integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" 
+          crossorigin="anonymous"></script>
+</body>
+</html>
